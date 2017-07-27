@@ -20,13 +20,13 @@ const helloWorld = function (code) {
   }
 }
 
-let greeting1 = helloWorld('es');
+const greeting1 = helloWorld('es');
 console.log( greeting1 );
 
-let greeting2 = helloWorld('de');
+const greeting2 = helloWorld('de');
 console.log( greeting2 );
 
-let greeting3 = helloWorld('en');
+const greeting3 = helloWorld('en');
 console.log( greeting3 );
 
 let greeting4 = helloWorld('ru');

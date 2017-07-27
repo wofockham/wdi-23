@@ -15,7 +15,7 @@ cumin
 cocoa
 */
 
-let recipe = { // Object literal
+const recipe = { // Object literal
   title: "Butterscotch",
   servings: 1,
   ingredients: ['butter', 'scotch']

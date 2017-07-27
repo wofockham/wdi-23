@@ -7,13 +7,13 @@ Bonus: Change it to log "My 1st choice, "My 2nd choice", "My 3rd choice", pickin
 
 */
 
-let presidents = [
+const presidents = [
   "Richard Nixon",
   "President Garfield",
   "President Cleveland",
   "President Obama"
 ];
 
-for (var i = 0; i < presidents.length; i++) {
+for (let i = 0; i < presidents.length; i++) {
   console.log(`My #${ i+1 } choice is ${ presidents[i] }.`);
 }

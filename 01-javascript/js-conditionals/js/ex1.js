@@ -18,8 +18,8 @@ const greaterNum = function (a, b) {
   }
 };
 
-let test1 = greaterNum(15, 35);
+const test1 = greaterNum(15, 35);
 console.log('The greater number of 15 and 35 is ' + test1);
 
-let test2 = greaterNum(150, 12);
+const test2 = greaterNum(150, 12);
 console.log('The greater number of 150 and 12 is ' + test2);
