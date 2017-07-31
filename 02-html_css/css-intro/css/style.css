@@ -1,0 +1,36 @@
+body {
+  background-color: lightgray;
+}
+
+p {
+  font-style: italic;
+}
+
+h1, h2, h3 {
+  text-decoration: underline;
+}
+
+/* Matches <p class="intro"> */
+p.intro {
+  font-style: normal;
+  font-size: 130%;
+  color: #1916a8;
+}
+
+.fancy {
+  color: red;
+  border: 1px solid red;
+}
+
+.example {
+  border: 1px solid green;
+  width: 500px;
+  height: 500px;
+  display: inline-block;
+}
+
+/*
+selector {
+  property: value;
+}
+*/
