@@ -1,0 +1,46 @@
+body {
+  background-color: #222222; /* #222 */
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 960px;
+  margin: auto;
+  background-color: #ccc; /* #cccccc */
+  padding: 1em;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+
+h1 {
+  text-align: center;
+  background-color: #222;
+  color: #ccc;
+  padding: 1em;
+}
+
+nav {
+  text-align: right;
+}
+
+main {
+  display: inline-block;
+  width: 75%;
+}
+
+aside {
+  display: inline-block;
+  width: 21%;
+  vertical-align: top;
+  background-color: #cfc;
+  padding: 1em;
+  margin-top: 63px;
+  border: 1px solid green;
+  border-radius: 0.5em;
+  box-shadow: 0 0 15px black;
+}
+
+aside ul {
+  padding-left: 26px;
+}
