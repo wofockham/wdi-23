@@ -1,0 +1,27 @@
+.demo {
+  border: 1px solid lime;
+}
+
+.block {
+  display: block;
+}
+
+.inline {
+  display: inline;
+  /* width and height are ignored by inline */
+  width: 50%;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.none {
+  display: none;
+}
+
+.inline-block {
+  display: inline-block;
+  width: 30%;
+  height: 150px;
+}
