@@ -15,3 +15,5 @@ const thumbnailify = function (index, element) {
 }
 
 $('a').each( thumbnailify );
+
+$('h2').funText();
