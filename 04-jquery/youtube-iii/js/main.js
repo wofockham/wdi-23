@@ -14,6 +14,7 @@ const thumbnailify = function (index, element) {
   });
 }
 
-$('a').each( thumbnailify );
-
-$('h2').funText();
+$(document).ready(function () {
+  $('a').each( thumbnailify );
+  $('h2').funText();
+});
