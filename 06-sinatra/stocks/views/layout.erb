@@ -3,15 +3,17 @@
   <head>
     <meta charset="utf-8">
     <title>Stock Price Lookup</title>
+    <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
+    <div class="container">
+      <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/faq">FAQ</a>
+      </nav>
 
-    <nav>
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="/faq">FAQ</a>
-    </nav>
-
-    <%= yield %><!-- Content goes here -->
+      <%= yield %><!-- Content goes here -->
+    </div>
   </body>
 </html>
