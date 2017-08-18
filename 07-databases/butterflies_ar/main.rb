@@ -13,6 +13,9 @@ ActiveRecord::Base.logger = Logger.new(STDERR)
 class Butterfly < ActiveRecord::Base
 end
 
+class Plant < ActiveRecord::Base
+end
+
 get '/' do
   erb :home
 end
@@ -21,6 +24,15 @@ end
 get '/butterflies' do
   @butterflies = Butterfly.all
   erb :butterflies_index
+end
+
+get '/butterflies/families/:family' do
+  @butterflies = Butterfly.where :family => params[:family]
+  erb :butterflies_index
+end
+
+before do
+  @families = Butterfly.pluck(:family).uniq
 end
 
 # NEW
@@ -66,4 +78,57 @@ get '/butterflies/:id/delete' do
   butterfly = Butterfly.find params[:id]
   butterfly.destroy
   redirect to('/butterflies')
+end
+
+# INDEX
+get '/plants' do
+  @plants = Plant.all
+  erb :plants_index
+end
+
+# NEW
+get '/plants/new' do
+  erb :plants_new
+end
+
+# CREATE
+post '/plants' do
+  plant = Plant.new
+  plant.name = params[:name]
+  plant.image = params[:image]
+  plant.save
+
+  redirect to("/plants/#{ plant.id }")
+end
+
+# SHOW
+get '/plants/:id' do
+  @plant = Plant.find params[:id]
+  erb :plants_show
+end
+
+# EDIT
+get '/plants/:id/edit' do
+  @plant = Plant.find params[:id]
+  erb :plants_edit
+end
+
+# UPDATE
+post '/plants/:id' do
+  plant = Plant.find params[:id]
+  plant.name = params[:name]
+  plant.image = params[:image]
+  plant.save
+  redirect to("/plants/#{ plant.id }")
+end
+
+# DESTROY
+get '/plants/:id/delete' do
+  plant = Plant.find params[:id]
+  plant.destroy
+  redirect to('/plants')
+end
+
+after do
+  ActiveRecord::Base.connection.close
 end
