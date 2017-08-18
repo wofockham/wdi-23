@@ -1,6 +1,12 @@
 require 'pry'
 
-class MarxBrother
+class Actor
+  def award_speech
+    "I would like to thank my parents"
+  end
+end
+
+class MarxBrother < Actor
   attr_accessor :name, :instrument, :vice
   def initialize(n="Somebody Marx", i=nil, v=nil) # Variadic
     @name = n
@@ -15,6 +21,9 @@ class MarxBrother
   def sing
     "Tra la la la la la"
   end
+end
+
+class Stooge < Actor
 end
 
 groucho = MarxBrother.new 'Groucho', 'guitar', 'cigars'
