@@ -5,5 +5,11 @@
   <input type="text" name="family" value="<%= @butterfly['family'] %>" placeholder="Butterfly family">
   <input type="url" name="image" value="<%= @butterfly['image'] %>" placeholder="http://...">
 
+  <select name="plant_id">
+    <% Plant.all.each do |plant| %>
+      <option value="<%= plant.id %>"><%= plant.name %></option>
+    <% end %>
+  </select>
+
   <button>Update butterfly</button>
 </form>
