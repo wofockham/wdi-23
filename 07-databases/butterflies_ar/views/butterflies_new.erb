@@ -6,6 +6,7 @@
   <input type="url" name="image" placeholder="http://...">
 
   <select name="plant_id">
+    <option></option>
     <% Plant.all.each do |plant| %>
       <option value="<%= plant.id %>"><%= plant.name %></option>
     <% end %>
