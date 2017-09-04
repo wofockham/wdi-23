@@ -10,4 +10,8 @@ class Bank
   def create_account(name, deposit)
     @accounts[name] = deposit
   end
+
+  def deposit(name, amount)
+    @accounts[name] += amount
+  end
 end
