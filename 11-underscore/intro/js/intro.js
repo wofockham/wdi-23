@@ -44,3 +44,43 @@ const oldTimers = _(brothers).filter(function (b) {
   return b.age >= 40;
 });
 console.log( oldTimers );
+
+// Sorting and grouping ////////////////////////////////////////////////////////
+const sortedBrothers = _(brothers).sortBy('age');
+console.log( sortedBrothers );
+
+const scores = [1.2, 1.9, 2.4, 2.7, 1.1, 4.3];
+const groupedScores = _(scores).groupBy(function (n) {
+  return Math.floor( n );
+})
+console.log( groupedScores );
+
+// Predicate methods ///////////////////////////////////////////////////////////
+const data = [1, 2, 3, 4, 5];
+const allEven = _(data).every(function (n) {
+  return n % 2 === 0; // Is n even?
+});
+console.log( allEven );
+
+const someEven = _(data).some(function (n) {
+  return n % 2 === 0; // Is n even?
+});
+console.log( someEven );
+
+console.log( _(data).contains(3) ); // => true (goodbye -1)
+
+console.log( _(brothers).pluck('vice') );
+
+console.log( _(brothers).max('age') ); // Returns an object
+console.log( _(brothers).min('age') ); // Returns an object
+
+// Fun collection helpers //////////////////////////////////////////////////////
+// const data = [1, 2, 3, 4, 5];
+_(data).shuffle();
+_(data).sample();
+_(data).sample(2);
+
+const countedData = _(data).countBy(function (n) {
+  return n % 2 === 0 ? 'even' : 'odd';
+});
+console.log( countedData );
