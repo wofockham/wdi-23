@@ -98,3 +98,17 @@ const countedData = _(data).countBy(function (n) {
   return n % 2 === 0 ? 'even' : 'odd';
 });
 console.log( countedData );
+
+////////////////////////////////////////////////////////////////////////////////
+// Arrays - Access
+// const data = [1, 2, 3, 4, 5];
+_(data).first();
+_(data).last();
+
+console.log( _(data).initial(3) ); // AKA .take
+console.log( _(data).rest(2) ); // AKA .drop
+
+////////////////////////////////////////////////////////////////////////////////
+// Arrays - Cleaning
+console.log( _([0, 1, false, 2, '', 3]).compact() );
+console.log( _([1, [2], [3, [4]]]).flatten() );
