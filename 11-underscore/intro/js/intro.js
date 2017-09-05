@@ -1,6 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////
-// Collections
-//   Iteration
+// Collections - Easy Iteration
 const bros = ["Groucho", "Harpo", "Chico"];
 
 _(bros).forEach(function (b) {
@@ -17,19 +16,22 @@ _(groucho).forEach(function (value, key) { // Note: value comes before key
   console.log( `${key} is ${value}.` );
 });
 
-// Map / Reduce
+
+////////////////////////////////////////////////////////////////////////////////
+// Collections - Map / Reduce
 const squares = _([1, 2, 3]).map(function (n) {
   return n * n; // n squared
 });
 console.log( squares );
 
 const sum = _([1, 2, 3]).reduce(function (memo, n) {
-  // console.log( memo, n );
   return memo + n;
 });
 console.log( sum );
 
-// Collections (like ActiveRecord)
+
+////////////////////////////////////////////////////////////////////////////////
+// Collections - Search through arrays of objects (ActiveRecord inspired)
 const brothers = [
   {name: 'Groucho', instrument: 'guitar', vice: 'cigars', age: 44},
   {name: 'Harpo', instrument: 'harp', vice: 'mutism', age: 42},
@@ -45,7 +47,9 @@ const oldTimers = _(brothers).filter(function (b) {
 });
 console.log( oldTimers );
 
-// Sorting and grouping ////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Collections - Sorting and grouping
 const sortedBrothers = _(brothers).sortBy('age');
 console.log( sortedBrothers );
 
@@ -55,7 +59,9 @@ const groupedScores = _(scores).groupBy(function (n) {
 })
 console.log( groupedScores );
 
-// Predicate methods ///////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Collections - Predicate methods
 const data = [1, 2, 3, 4, 5];
 const allEven = _(data).every(function (n) {
   return n % 2 === 0; // Is n even?
@@ -67,6 +73,9 @@ const someEven = _(data).some(function (n) {
 });
 console.log( someEven );
 
+
+////////////////////////////////////////////////////////////////////////////////
+// Arrays - Find specific data
 console.log( _(data).contains(3) ); // => true (goodbye -1)
 
 console.log( _(brothers).pluck('vice') );
@@ -74,12 +83,17 @@ console.log( _(brothers).pluck('vice') );
 console.log( _(brothers).max('age') ); // Returns an object
 console.log( _(brothers).min('age') ); // Returns an object
 
-// Fun collection helpers //////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Arrays - Random elements
 // const data = [1, 2, 3, 4, 5];
 _(data).shuffle();
 _(data).sample();
 _(data).sample(2);
 
+
+////////////////////////////////////////////////////////////////////////////////
+// Arrays - Counting elements
 const countedData = _(data).countBy(function (n) {
   return n % 2 === 0 ? 'even' : 'odd';
 });
