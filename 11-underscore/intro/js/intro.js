@@ -112,3 +112,28 @@ console.log( _(data).rest(2) ); // AKA .drop
 // Arrays - Cleaning
 console.log( _([0, 1, false, 2, '', 3]).compact() );
 console.log( _([1, [2], [3, [4]]]).flatten() );
+
+////////////////////////////////////////////////////////////////////////////////
+// Arrays - Arithmetic
+console.log( _([1, 2, 1, 0, 3, 1, 4]).without(0, 1) );
+console.log( _.union([1, 2, 3], [101, 2, 1, 10], [2, 1], [7]) ); // All unique elements.
+console.log( _.intersection([1, 2, 3], [101, 2, 1, 10], [2, 1]) ); // All common elements.
+console.log( _([1, 2, 3, 4, 5]).difference([5, 2, 10]) ); // Subtract the second from the first.
+
+////////////////////////////////////////////////////////////////////////////////
+// zip/unzip/object
+console.log( _.zip(['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false]) );
+console.log( _.unzip( [["moe",30,true],["larry",40,false],["curly",50,false]] ) );
+// Turn an array of keys and an array of values into a single object of key value pairs.
+console.log( _.object( ['moe', 'larry', 'curly'], [30, 40, 50] ));
+
+// ['groucho', 'harpo', 'chico'].indexOf( 'harpo' )
+_(['groucho', 'harpo', 'chico']).indexOf( 'harpo' );
+_(['groucho', 'harpo', 'chico', 'harpo', 'chico', 'harpo']).lastIndexOf( 'harpo' );
+
+////////////////////////////////////////////////////////////////////////////////
+// Ranges
+_.range(10); // Starts from 0
+_.range(1, 11); // Upper and lower bounds
+_.range(0, 30, 5); // 5 is the step
+_.range(0, -10, -1); // Count backwards if desired
