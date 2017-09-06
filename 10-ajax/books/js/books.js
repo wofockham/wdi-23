@@ -1,5 +1,5 @@
 const fetchBook = function () {
-  const title = document.getElementById('title').value;
+  const title = $('#title').val();
 
   $.ajax(`https://www.googleapis.com/books/v1/volumes?q=title:${title}`).done(function (info) {
     const cover = info.items[0].volumeInfo.imageLinks.thumbnail;
