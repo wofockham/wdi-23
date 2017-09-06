@@ -137,3 +137,29 @@ _.range(10); // Starts from 0
 _.range(1, 11); // Upper and lower bounds
 _.range(0, 30, 5); // 5 is the step
 _.range(0, -10, -1); // Count backwards if desired
+
+////////////////////////////////////////////////////////////////////////////////
+// Object Transformations
+const data2 = { name: 'John', location: 'San Franciso' };
+console.log( _(data2).keys() );
+
+const sales = { monday: 100, tuesday: 200 };
+const betterSales = _(sales).mapObject(function (value, key) {
+  return value * 2;
+});
+console.log( betterSales );
+
+console.log( _(data2).pairs() );
+console.log( _(sales).invert() );
+
+////////////////////////////////////////////////////////////////////////////////
+// Object Access
+const data3 = { name: 'John', location: 'San Franciso', description: 'Very nice thanks' };
+console.log( _(data3).pick( 'name', 'location' ) );
+console.log( _(data3).omit( 'description' ) );
+console.log( _(data3).defaults( {name: 'Unknown', weight: 0} ) );
+console.log( _(data3).has( 'name' ) );
+
+////////////////////////////////////////////////////////////////////////////////
+// Object Equality
+console.log( _.isEqual( {name: 'John'}, {name: 'John'} ) );
