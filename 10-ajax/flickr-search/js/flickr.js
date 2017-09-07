@@ -1,21 +1,14 @@
-const state = {
+'use strict';
+
+var state = {
   currentPage: 1,
   lastPage: false
 };
 
-const showImages = function (results) {
-    const generateURL = function (photo) {
-      return [
-        'http://farm',
-        photo.farm,
-        '.static.flickr.com/',
-        photo.server,
-        '/',
-        photo.id,
-        '_',
-        photo.secret,
-        '_q.jpg' // Change the q for different sizes
-      ].join('');
+var showImages = function showImages(results) {
+  var generateURL = function generateURL(photo) {
+    return ['http://farm', photo.farm, '.static.flickr.com/', photo.server, '/', photo.id, '_', photo.secret, '_q.jpg' // Change the q for different sizes
+    ].join('');
   };
 
   if (results.photos.page === results.photos.pages) {
@@ -23,22 +16,21 @@ const showImages = function (results) {
   }
 
   _(results.photos.photo).each(function (p) {
-    const imageURL = generateURL(p);
-    const $img = $('<img>', {src: imageURL}); // Equivalent .attr('src', imageURL);
+    var imageURL = generateURL(p);
+    var $img = $('<img>', { src: imageURL }); // Equivalent .attr('src', imageURL);
     // Use the full size image URL rather than a link to flickr.com
-    const $a = $('<a></a>', {href: 'http://flickr.com/', target: '_blank'});
+    var $a = $('<a></a>', { href: 'http://flickr.com/', target: '_blank' });
     $a.html($img);
 
     $a.on('click', function () {
-      alert( p.farm );
-    })
+      alert(p.farm);
+    });
 
     $a.appendTo('#images');
   });
-
 };
 
-const searchFlickr = function (q) {
+var searchFlickr = function searchFlickr(q) {
 
   if (state.lastPage) {
     return;
@@ -46,7 +38,7 @@ const searchFlickr = function (q) {
 
   console.log('Searching Flickr for', q);
 
-  const flickrURL = 'https://api.flickr.com/services/rest/?jsoncallback=?';
+  var flickrURL = 'https://api.flickr.com/services/rest/?jsoncallback=?';
 
   $.getJSON(flickrURL, {
     method: 'flickr.photos.search',
@@ -55,7 +47,6 @@ const searchFlickr = function (q) {
     format: 'json',
     page: state.currentPage++
   }).done(showImages);
-
 };
 
 $(document).ready(function () {
@@ -66,23 +57,22 @@ $(document).ready(function () {
     state.currentPage = 1;
     state.lastPage = false;
 
-    const query = $('#query').val();
-    searchFlickr( query );
+    var query = $('#query').val();
+    searchFlickr(query);
   });
 
-  const throttledSearchFlickr = _.throttle(searchFlickr, 6000, { trailing: false });
+  var throttledSearchFlickr = _.throttle(searchFlickr, 6000, { trailing: false });
 
   $(window).on('scroll', function () {
-    const documentHeight = $(document).height();
-    const windowHeight = $(window).height();
-    const scrollTop = $(window).scrollTop();
+    var documentHeight = $(document).height();
+    var windowHeight = $(window).height();
+    var scrollTop = $(window).scrollTop();
 
-    const scrollBottom = documentHeight - (scrollTop + windowHeight);
+    var scrollBottom = documentHeight - (scrollTop + windowHeight);
 
     if (scrollBottom < 500) {
-      const query = $('#query').val();
-      throttledSearchFlickr( query );
+      var query = $('#query').val();
+      throttledSearchFlickr(query);
     }
-
   });
 });
