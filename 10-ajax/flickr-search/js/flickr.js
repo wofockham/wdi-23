@@ -1,5 +1,10 @@
+const state = {
+  currentPage: 1,
+  requestInProgress: false
+};
+
 const showImages = function (results) {
-  const generateURL = function (photo) {
+    const generateURL = function (photo) {
     return [
       'http://farm',
       photo.farm,
@@ -20,9 +25,17 @@ const showImages = function (results) {
     const $img = $('<img>', {src: imageURL}); // Equivalent .attr('src', imageURL);
     $img.appendTo('#images');
   });
+
+  state.requestInProgress = false;
 };
 
 const searchFlickr = function (q) {
+
+  if (state.requestInProgress) {
+    return;
+  }
+
+  state.requestInProgress = true;
   console.log('Searching Flickr for', q);
 
   const flickrURL = 'https://api.flickr.com/services/rest/?jsoncallback=?';
@@ -31,13 +44,18 @@ const searchFlickr = function (q) {
     method: 'flickr.photos.search',
     api_key: '2f5ac274ecfac5a455f38745704ad084',
     text: q,
-    format: 'json'
+    format: 'json',
+    page: state.currentPage++
   }).done(showImages);
+
 };
 
 $(document).ready(function () {
   $('#search').on('submit', function (e) {
     e.preventDefault();
+
+    $('#images').empty();
+    state.currentPage = 1;
 
     const query = $('#query').val();
     searchFlickr( query );
