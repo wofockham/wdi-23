@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
+// rails server -p 5000
+const SERVER_URL = 'http://localhost:5000/secrets.json';
 
 class SecretsForm extends Component {
   constructor(props) {
@@ -32,23 +36,43 @@ class SecretsForm extends Component {
 class SecretsGallery extends Component {
   render() {
     return (
-      <h2>Actual Secrets Coming Soon</h2>
+      <div>
+        { this.props.secrets.map( (s) => <p key={s.id}>{s.content}</p> ) }
+      </div>
     );
   }
 }
 
 class Secrets extends Component {
+  constructor(props) {
+    /* oh */ super(props);
+    this.state = { secrets: [] };
+    this.saveSecret = this.saveSecret.bind(this);
+
+    // Fat arrow function to preserve the value of `this`.
+    const fetchSecrets = () => {
+      axios.get(SERVER_URL).then(function (results) {
+        this.setState({secrets: results.data});
+      }.bind(this));
+      setTimeout( fetchSecrets, 5000 );
+    }
+
+    fetchSecrets();
+  }
+
   saveSecret(content) {
-    console.log( content );
     // Save the secret to the server using AJAX
+    axios.post(SERVER_URL, { content: content }).then(function (result) {
+      this.setState({secrets: [result.data, ...this.state.secrets]});
+    }.bind(this));
   }
 
   render() {
     return (
       <div>
         <h1>Tell Us All Your Secrets</h1>
-        <SecretsForm onSubmit={this.saveSecret}/>
-        <SecretsGallery />
+        <SecretsForm onSubmit={this.saveSecret} />
+        <SecretsGallery secrets={ this.state.secrets } />
       </div>
     );
   }
