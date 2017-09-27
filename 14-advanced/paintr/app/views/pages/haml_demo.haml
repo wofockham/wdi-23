@@ -1,0 +1,13 @@
+%h1.title.demo#something Haml Demo
+
+%div.container
+  %p Here is a demo of some HAML features
+  %h3= Random.rand
+%h2 Everything is broken
+
+%ul
+  - %w( Groucho Harpo Harpo Chico ).each do |brother|
+    %li= brother
+
+%p
+  = link_to "Haml Documentation and Tutorial", "http://haml.info/tutorial.html"
