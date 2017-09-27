@@ -1,0 +1,11 @@
+<h2>Port Scanner</h2>
+
+<h3>nmap results: random IP addresses with open web servers</h3>
+
+<h4><%= @hosts.count %> hosts detected</h4>
+
+<% @hosts.each do |h| %>
+  <p>
+    <a href="http://<%= h %>" target="_blank"><%= h %></a>
+  </p>
+<% end %>
