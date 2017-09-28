@@ -55,7 +55,7 @@ RSpec.describe FruitsController, type: :controller do
   describe 'POST to create' do
     describe 'a fruit with valid information' do
       before do
-        post :create, { :fruit => { :name => 'Strawberry' } }
+        post :create, :params => { :fruit => { :name => 'Strawberry' } }
       end
 
       it 'should redirect to the show page' do
@@ -69,7 +69,7 @@ RSpec.describe FruitsController, type: :controller do
 
     describe 'a fruit with invalid information' do
       before do
-        post :create, { :fruit => { :name => '' } }
+        post :create, :params => { :fruit => { :name => '' } }
       end
 
       it 'should render the new template' do
