@@ -17,3 +17,9 @@ body {
   background-image: url(http://fillmurray.com/900/1200);
   background-size: cover;
 }
+
+.bubble {
+  position: absolute;
+  border: 2px solid lightblue;
+  border-radius: 100%;
+}
