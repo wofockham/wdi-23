@@ -26,5 +26,5 @@ const numbers = [134, 34, 3, 4, -1001, 0, 12, 100000];
 // Math.max( numbers ); // Doesn't work because .max expects separate parameters.
 // ES5:
 Math.max.apply(null, numbers); // Flattening out the numbers array into separate params.
-// ES6:
-Math.max( ...numbers ); // Destructuring or splatting.
+// ES6: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator
+Math.max( ...numbers ); // Spread operator (splatting in JS).
