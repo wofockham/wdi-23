@@ -33,11 +33,11 @@ export default class GithubUser extends Component {
 class Profile extends Component {
   render () {
     if (this.props.user === null) {
-      return (<div>Loading...</div>);
+      return (<div className="profile">Loading...</div>);
     }
     const { login, followers, following, public_repos, public_gists } = this.props.user;
     return (
-      <div>
+      <div className="profile">
         <h3>Stats for {login}</h3>
         <p>Followers: {followers}</p>
         <p>Following: {following}</p>
@@ -51,7 +51,7 @@ class Profile extends Component {
 class Repositories extends Component {
   render() {
     if (this.props.repos === null) {
-      return(<div>Loading...</div>);
+      return(<div className="repos">Loading...</div>);
     }
 
     let userRepos = this.props.repos.map( (r) => {
@@ -65,7 +65,7 @@ class Repositories extends Component {
     });
 
     return(
-      <div>
+      <div className="repos">
         <h3>User Repositories</h3>
         <ul>
           {userRepos}
