@@ -1,0 +1,81 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Global variables
+$brand-color: #04ff7b;
+$centered: 0 auto;
+
+// Mixins (think "functions")
+@mixin colouredBG {
+  background-color: $brand-color;
+}
+
+@mixin center {
+  margin: $centered; // margin: 0 auto;
+}
+
+@mixin greyItalic {
+  color: grey;
+  font-style: italic;
+}
+
+body {
+  @include colouredBG;
+}
+
+h1 {
+  text-align: center;
+}
+
+.post {
+  @include center;
+  max-width: 960px;
+  margin-bottom: 3em;
+  padding: 1em;
+  background-color: white;
+  border-bottom: 1px solid black;
+  border-radius: 0.5em;
+  box-shadow: 0 0 10px black;
+
+  h2 {
+    @include greyItalic;
+  }
+
+  h3.author {
+    text-align: right;
+    @include greyItalic;
+  }
+
+  .content {
+    border: 1px solid $brand-color;
+    padding: 1em;
+    border-radius: 0.5em;
+
+    p {
+      font-size: 120%;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+.notification {
+  border: 1px solid black;
+  border-radius: 0.5em;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: green;
+  padding: 1em;
+  font-size: 150%;
+}
+
+.error {
+  @extend .notification; // Inheritance
+  color: red;
+}
+
+.success {
+  @extend .notification;
+  color: blue;
+  border: 1px dashed blue;
+}
